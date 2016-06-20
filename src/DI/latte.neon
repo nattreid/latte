@@ -1,0 +1,7 @@
+latte:
+    macros:
+        - NAttreid\Latte\Macro\Crm
+        - NAttreid\Latte\Macro\Helper
+
+services:
+    latte.templateFactory: NAttreid\Latte\TemplateFactory
