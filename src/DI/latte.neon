@@ -1,6 +1,6 @@
 latte:
     macros:
-        - NAttreid\Latte\Macro\Crm
+        - NAttreid\Latte\Macro\Html
         - NAttreid\Latte\Macro\Helper
 
 services:

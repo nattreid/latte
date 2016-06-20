@@ -3,11 +3,11 @@
 namespace NAttreid\Latte\Macro;
 
 /**
- * Makra pro crm latte
+ * Html makra latte
  * 
  * @author Attreid <attreid@gmail.com>
  */
-class Crm extends \Latte\Macros\MacroSet {
+class Html extends \Latte\Macros\MacroSet {
 
     public static function install(\Latte\Compiler $compiler) {
         $me = new static($compiler);
