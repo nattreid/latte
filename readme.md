@@ -22,12 +22,12 @@ use \NAttreid\Latte\Template;
 ### onLoad
 Pro spuštení JS skriptu po asynchroním nahrání základních JS skriptů
 ```html
-    <script type="text/javascript">
-        function somefunction() {
-            jaavscript code ...
-        }
-        {onLoad somefunction}
-    </script>    
+<script type="text/javascript">
+    function somefunction() {
+        jaavscript code ...
+    }
+    {onLoad somefunction}
+</script>    
 ```
 
 ### Try
@@ -40,65 +40,65 @@ Zachytávání vyjímek v latte
 
 ### Panel
 ```html
-    {panel 'textToTranslate', dalsiNeprekladanyText, class => 'nameOfClass', id => 'nameOfId'}
-        html kod ...
-    {/panel}
+{panel 'textToTranslate', dalsiNeprekladanyText, class => 'nameOfClass', id => 'nameOfId'}
+    html kod ...
+{/panel}
 ```
 
 ### View
 ```html
-    {view class => 'nameOfClass', id => 'nameOfId'}
-        html kod ...
-    {/view}
+{view class => 'nameOfClass', id => 'nameOfId'}
+    html kod ...
+{/view}
 ```
 
 ## Latte Filtry
 ### Lokalizovane číslo
 ```html
-    {$number|localeNumber}
+{$number|localeNumber}
 ```
 
 ### Procenta
 ```html
-    {$number|percent:$total:$decimal}
+{$number|percent:$total:$decimal}
 ```
 
 ### Frekvence
 ```html
-    {$cpu|frequency}
+{$cpu|frequency}
 ```
 
 ### Velikost soborů
 ```html
-    {$fileSize|size:$decimal:$binary}
+{$fileSize|size:$decimal:$binary}
 ```
 
 ### Lokalizovaný čas
 ```html
-    {$datetime|localeDateTime}
+{$datetime|localeDateTime}
 ```
 
 ### Lokalizované datum
 ```html
-    {$datetime|localeDate}
+{$datetime|localeDate}
 ```
 
 ### Den v týdnu
 ```html
-    {$day|day}
+{$day|day}
 ```
 
 ### Zkrácený den v týdnu
 ```html
-    {$day|shortDay}
+{$day|shortDay}
 ```
 
 ### Měsíc v roce
 ```html
-    {$month|month}
+{$month|month}
 ```
 
 ### Zkrácený měsíc v roce
 ```html
-    {$month|shortMonth}
+{$month|shortMonth}
 ```
