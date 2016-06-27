@@ -9,13 +9,6 @@ namespace NAttreid\Latte\DI;
  */
 class LatteExtension extends \Nette\DI\CompilerExtension {
 
-    public function loadConfiguration() {
-        $builder = $this->getContainerBuilder();
-        $builder->removeDefinition('latte.templateFactory');
-        $builder->addDefinition('latte.templateFactory')
-                ->setClass('NAttreid\Latte\TemplateFactory');
-    }
-
     public function beforeCompile() {
         $builder = $this->getContainerBuilder();
         $builder->getDefinition('latte.latteFactory')
