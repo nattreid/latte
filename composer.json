@@ -17,6 +17,8 @@
     ],
     "require": {
         "php": ">= 5.6",
+        "nette/di": "~2.3",
+        "nette/application": "~2.3",
         "latte/latte": "~2.3",
         "nattreid/utils": "~1.0"
     },
