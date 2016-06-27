@@ -14,7 +14,7 @@ class LatteExtension extends \Nette\DI\CompilerExtension {
         $builder->getDefinition('latte.latteFactory')
                 ->addSetup('NAttreid\Latte\Macro\Html::install(?->getCompiler())', ['@self'])
                 ->addSetup('NAttreid\Latte\Macro\Helper::install(?->getCompiler())', ['@self'])
-                ->addSetup('addFilter', ['NAttreid\Latte\Filters', 'common']);
+                ->addSetup('addFilter', [NULL, 'NAttreid\Latte\Filters::common']);
     }
 
 }
