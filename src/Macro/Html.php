@@ -45,7 +45,7 @@ class Html extends \Latte\Macros\MacroSet {
                     <header>
                         <h1>";
             ' . (empty($data->toTranslate) ? 
-                'Latte\Macros\BlockMacrosRuntime::callBlock($_b, "panelTitle", $template->getParameters());' : 
+                '$this->renderBlock("panelTitle", get_defined_vars());':
                 'echo $template->translate("' . $data->toTranslate . '") . "' . $data->text . '";') . '
             echo "</h1>
                     </header>
