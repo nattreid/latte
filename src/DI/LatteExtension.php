@@ -2,6 +2,10 @@
 
 namespace NAttreid\Latte\DI;
 
+use NAttreid\Latte\Macro\Html,
+    NAttreid\Latte\Macro\Helper,
+    NAttreid\Latte\Filters;
+
 /**
  * Rozsireni
  * 
@@ -12,9 +16,9 @@ class LatteExtension extends \Nette\DI\CompilerExtension {
     public function beforeCompile() {
         $builder = $this->getContainerBuilder();
         $builder->getDefinition('latte.latteFactory')
-                ->addSetup('NAttreid\Latte\Macro\Html::install(?->getCompiler())', ['@self'])
-                ->addSetup('NAttreid\Latte\Macro\Helper::install(?->getCompiler())', ['@self'])
-                ->addSetup('addFilter', [NULL, 'NAttreid\Latte\Filters::common']);
+                ->addSetup(Html::class . '::install(?->getCompiler())', ['@self'])
+                ->addSetup(Helper::class . '::install(?->getCompiler())', ['@self'])
+                ->addSetup('addFilter', [NULL, Filters::class . '::common']);
     }
 
 }
