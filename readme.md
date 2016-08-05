@@ -8,7 +8,7 @@ extensions:
 ## Rozšíření
 V **BasePresenter** přidáte
 ```php
-use \NAttreid\Latte\Template;
+use \NAttreid\Latte\TemplateTrait;
 ```
 
 ## Makra

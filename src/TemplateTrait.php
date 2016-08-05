@@ -2,7 +2,7 @@
 
 namespace NAttreid\Latte;
 
-trait Template {
+trait TemplateTrait {
 
     /** @var string */
     private $templateDir;
