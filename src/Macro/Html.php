@@ -44,12 +44,12 @@ class Html extends \Latte\Macros\MacroSet {
             echo "<div' . (!empty($data->id) ? ' id=\"' . $data->id . '\"' : '') . ' class=\"panel-container' . (!empty($data->class) ? ' ' . $data->class : '') . '\">
                     <header>
                         <h1>";
-            ' . (empty($data->toTranslate) ? 
-                '$this->renderBlock("panelTitle", get_defined_vars());':
-                'echo $template->translate("' . $data->toTranslate . '") . "' . $data->text . '";') . '
-            echo "</h1>
+                            ' . (empty($data->toTranslate) ?
+                                'if(isset($this->blockQueue["title"])){$this->renderBlock("title", get_defined_vars());}' :
+                                'echo $template->translate("' . $data->toTranslate . '") . "' . $data->text . '";') . '
+                  echo "</h1>
                     </header>
-                    <div class=\"content\">";');
+                <div class=\"content\">";');
     }
 
     /**
