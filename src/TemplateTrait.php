@@ -44,7 +44,7 @@ trait TemplateTrait {
         if ($this->templateDir !== NULL) {
             $presenter = $this->templateDir;
         } else {
-            list(, $presenter) = Helpers::splitName($this->getName());
+            list($module, $presenter) = Helpers::splitName($this->getName());
         }
         $layout = $this->layout ? $this->layout : 'layout';
         $dir = dirname($this->getReflection()->getFileName());
