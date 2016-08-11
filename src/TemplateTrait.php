@@ -2,6 +2,8 @@
 
 namespace NAttreid\Latte;
 
+use Nette\Application\Helpers;
+
 trait TemplateTrait {
 
     /** @var string */
@@ -19,33 +21,42 @@ trait TemplateTrait {
      * {@inheritdoc }
      */
     public function formatTemplateFiles() {
-        $name = $this->getName();
-        $presenter = $this->templateDir !== NULL ? $this->templateDir : substr($name, strrpos(':' . $name, ':'));
+        if ($this->templateDir !== NULL) {
+            $presenter = $this->templateDir;
+        } else {
+            list(, $presenter) = Helpers::splitName($this->getName());
+        }
         $dir = dirname($this->getReflection()->getFileName());
         $dir = is_dir("$dir/templates") ? $dir : dirname($dir);
-        return array(
+        return [
             "$dir/templates/$presenter/$this->view.latte",
             "$dir/templates/$presenter.$this->view.latte",
-        );
+        ];
     }
 
     /**
      * {@inheritdoc }
      */
     public function formatLayoutTemplateFiles() {
-        $name = $this->getName();
-        $presenter = $this->templateDir !== NULL ? $this->templateDir : substr($name, strrpos(':' . $name, ':'));
+        if (preg_match('#/|\\\\#', $this->layout)) {
+            return [$this->layout];
+        }
+        if ($this->templateDir !== NULL) {
+            $presenter = $this->templateDir;
+        } else {
+            list(, $presenter) = Helpers::splitName($this->getName());
+        }
         $layout = $this->layout ? $this->layout : 'layout';
         $dir = dirname($this->getReflection()->getFileName());
         $dir = is_dir("$dir/templates") ? $dir : dirname($dir);
-        $list = array(
+        $list = [
             "$dir/templates/$presenter/@$layout.latte",
             "$dir/templates/$presenter.@$layout.latte",
-        );
+        ];
         do {
             $list[] = "$dir/templates/@$layout.latte";
             $dir = dirname($dir);
-        } while ($dir && ($name = substr($name, 0, strrpos($name, ':'))));
+        } while ($dir && $module && (list($module) = Helpers::splitName($module)));
         return $list;
     }
 
