@@ -9,12 +9,23 @@ trait TemplateTrait {
     /** @var string */
     private $templateDir;
 
+    /** @var string */
+    private $templatePath;
+
     /**
-     * Zmena adresare pro sablony
+     * Zmena pro sablony v ramci slozky templates
      * @param string $dir
      */
     protected function setViewDir($dir) {
         $this->templateDir = $dir;
+    }
+
+    /**
+     * Zmena cestyk adresari pro sablony
+     * @param string $path
+     */
+    protected function setViewPath($path) {
+        $this->templatePath = $path;
     }
 
     /**
@@ -26,7 +37,11 @@ trait TemplateTrait {
         } else {
             list(, $presenter) = Helpers::splitName($this->getName());
         }
-        $dir = dirname($this->getReflection()->getFileName());
+        if ($this->templatePath !== NULL) {
+            $dir = $this->templatePath;
+        } else {
+            $dir = dirname($this->getReflection()->getFileName());
+        }
         $dir = is_dir("$dir/templates") ? $dir : dirname($dir);
         return [
             "$dir/templates/$presenter/$this->view.latte",
@@ -43,11 +58,16 @@ trait TemplateTrait {
         }
         if ($this->templateDir !== NULL) {
             $presenter = $this->templateDir;
+            $module = NULL;
         } else {
             list($module, $presenter) = Helpers::splitName($this->getName());
         }
         $layout = $this->layout ? $this->layout : 'layout';
-        $dir = dirname($this->getReflection()->getFileName());
+        if ($this->templatePath !== NULL) {
+            $dir = $this->templatePath;
+        } else {
+            $dir = dirname($this->getReflection()->getFileName());
+        }
         $dir = is_dir("$dir/templates") ? $dir : dirname($dir);
         $list = [
             "$dir/templates/$presenter/@$layout.latte",
