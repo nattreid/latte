@@ -16,7 +16,7 @@ trait TemplateTrait {
      * Zmena pro sablony v ramci slozky templates
      * @param string $dir
      */
-    protected function setViewDir($dir) {
+    protected function setViewDir($dir = NULL) {
         $this->templateDir = $dir;
     }
 
@@ -24,7 +24,7 @@ trait TemplateTrait {
      * Zmena cestyk adresari pro sablony
      * @param string $path
      */
-    protected function setViewPath($path) {
+    protected function setViewPath($path = NULL) {
         $this->templatePath = $path;
     }
 
