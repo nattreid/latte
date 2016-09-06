@@ -49,7 +49,7 @@ class Html extends \Latte\Macros\MacroSet
                         <h1>";
                             ' . (empty($data->toTranslate) ?
 				'if(isset($this->blockQueue["title"])){$this->renderBlock("title", get_defined_vars());}' :
-				'echo $template->translate("' . $data->toTranslate . '") . "' . $data->text . '";') . '
+				'echo LR\Filters::escapeHtmlText(call_user_func($this->filters->translate, "' . $data->toTranslate . '")). "' . $data->text . '";') . '
                   echo "</h1>
                     </header>
                 <div class=\"content\">";');
