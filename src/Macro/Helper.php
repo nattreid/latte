@@ -57,8 +57,8 @@ class Helper extends \Latte\Macros\MacroSet
 			throw new \Latte\CompileException('Missing component name argument in {exist} macro.');
 		}
 		return $writer->write('
-            $component= $_control->getComponent("' . $node->args . '", FALSE);
-            if($component !== NULL) {
+            $component= $_control->getComponent("' . $node->args . '", false);
+            if($component !== null) {
         ');
 	}
 

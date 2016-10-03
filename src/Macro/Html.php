@@ -29,14 +29,14 @@ class Html extends \Latte\Macros\MacroSet
 		$args = explode(',', $node->args);
 		$data = new \stdClass;
 		$data->text = '';
-		$data->toTranslate = NULL;
+		$data->toTranslate = null;
 
 		foreach ($args as $arg) {
 			if (strpos($arg, '=>') !== false) {
 				list($object, $value) = array_map('trim', explode('=>', $arg));
 				$data->$object = $value;
 			} else {
-				if ($data->toTranslate === NULL) {
+				if ($data->toTranslate === null) {
 					$data->toTranslate = str_replace('"', '', trim($arg));
 				} else {
 					$data->text .= ' ' . trim($arg);

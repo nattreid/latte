@@ -66,7 +66,7 @@ class Filters
 	 * @param boolean $binary
 	 * @return string
 	 */
-	private static function size($number, $decimal = 2, $binary = FALSE)
+	private static function size($number, $decimal = 2, $binary = false)
 	{
 		return Number::size($number, $decimal, $binary);
 	}

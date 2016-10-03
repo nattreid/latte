@@ -20,7 +20,7 @@ class LatteExtension extends \Nette\DI\CompilerExtension
 		$builder->getDefinition('latte.latteFactory')
 			->addSetup(Html::class . '::install(?->getCompiler())', ['@self'])
 			->addSetup(Helper::class . '::install(?->getCompiler())', ['@self'])
-			->addSetup('addFilter', [NULL, Filters::class . '::common']);
+			->addSetup('addFilter', [null, Filters::class . '::common']);
 	}
 
 }

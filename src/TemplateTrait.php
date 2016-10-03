@@ -17,7 +17,7 @@ trait TemplateTrait
 	 * Zmena pro sablony v ramci slozky templates
 	 * @param string $dir
 	 */
-	protected function setViewDir($dir = NULL)
+	protected function setViewDir($dir = null)
 	{
 		$this->templateDir = $dir;
 	}
@@ -26,7 +26,7 @@ trait TemplateTrait
 	 * Zmena cestyk adresari pro sablony
 	 * @param string $path
 	 */
-	protected function setViewPath($path = NULL)
+	protected function setViewPath($path = null)
 	{
 		$this->templatePath = $path;
 	}
@@ -36,12 +36,12 @@ trait TemplateTrait
 	 */
 	public function formatTemplateFiles()
 	{
-		if ($this->templateDir !== NULL) {
+		if ($this->templateDir !== null) {
 			$presenter = $this->templateDir;
 		} else {
 			list(, $presenter) = Helpers::splitName($this->getName());
 		}
-		if ($this->templatePath !== NULL) {
+		if ($this->templatePath !== null) {
 			$dir = $this->templatePath;
 		} else {
 			$dir = dirname($this->getReflection()->getFileName());
@@ -61,14 +61,14 @@ trait TemplateTrait
 		if (preg_match('#/|\\\\#', $this->layout)) {
 			return [$this->layout];
 		}
-		if ($this->templateDir !== NULL) {
+		if ($this->templateDir !== null) {
 			$presenter = $this->templateDir;
-			$module = NULL;
+			$module = null;
 		} else {
 			list($module, $presenter) = Helpers::splitName($this->getName());
 		}
 		$layout = $this->layout ? $this->layout : 'layout';
-		if ($this->templatePath !== NULL) {
+		if ($this->templatePath !== null) {
 			$dir = $this->templatePath;
 		} else {
 			$dir = dirname($this->getReflection()->getFileName());
