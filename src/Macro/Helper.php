@@ -1,16 +1,24 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Latte\Macro;
+
+use Latte\CompileException;
+use Latte\Compiler;
+use Latte\MacroNode;
+use Latte\Macros\MacroSet;
+use Latte\PhpWriter;
 
 /**
  * Helper Makra
  *
  * @author Attreid <attreid@gmail.com>
  */
-class Helper extends \Latte\Macros\MacroSet
+class Helper extends MacroSet
 {
 
-	public static function install(\Latte\Compiler $compiler)
+	public static function install(Compiler $compiler)
 	{
 		$me = new static($compiler);
 		$me->addMacro('onLoad', [$me, 'macroOnLoad']);
@@ -20,15 +28,15 @@ class Helper extends \Latte\Macros\MacroSet
 
 	/**
 	 * onLoad pro javascript
-	 * @param \Latte\MacroNode $node
-	 * @param \Latte\PhpWriter $writer
+	 * @param MacroNode $node
+	 * @param PhpWriter $writer
 	 * @return string
-	 * @throws \Latte\CompileException
+	 * @throws CompileException
 	 */
-	public function macroOnLoad(\Latte\MacroNode $node, \Latte\PhpWriter $writer)
+	public function macroOnLoad(MacroNode $node, PhpWriter $writer): string
 	{
 		if ($node->args == '') {
-			throw new \Latte\CompileException('Missing function name argument in {onLoad} macro.');
+			throw new CompileException('Missing function name argument in {onLoad} macro.');
 		}
 		return $writer->write('
             if($presenter->isAjax()) {
@@ -46,15 +54,15 @@ class Helper extends \Latte\Macros\MacroSet
 
 	/**
 	 * Existuje komponenta
-	 * @param \Latte\MacroNode $node
-	 * @param \Latte\PhpWriter $writer
+	 * @param MacroNode $node
+	 * @param PhpWriter $writer
 	 * @return string
-	 * @throws \Latte\CompileException
+	 * @throws CompileException
 	 */
-	public function macroExist(\Latte\MacroNode $node, \Latte\PhpWriter $writer)
+	public function macroExist(MacroNode $node, PhpWriter $writer): string
 	{
 		if ($node->args == '') {
-			throw new \Latte\CompileException('Missing component name argument in {exist} macro.');
+			throw new CompileException('Missing component name argument in {exist} macro.');
 		}
 		return $writer->write('
             $component= $_control->getComponent("' . $node->args . '", false);
@@ -64,12 +72,12 @@ class Helper extends \Latte\Macros\MacroSet
 
 	/**
 	 * Konec Exist helperu
-	 * @param \Latte\MacroNode $node
-	 * @param \Latte\PhpWriter $writer
+	 * @param MacroNode $node
+	 * @param PhpWriter $writer
 	 * @return string
-	 * @throws \Latte\CompileException
+	 * @throws CompileException
 	 */
-	public function macroEndExist(\Latte\MacroNode $node, \Latte\PhpWriter $writer)
+	public function macroEndExist(MacroNode $node, PhpWriter $writer): string
 	{
 		return '}';
 	}

@@ -1,17 +1,20 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Latte\DI;
 
 use NAttreid\Latte\Filters;
 use NAttreid\Latte\Macro\Helper;
 use NAttreid\Latte\Macro\Html;
+use Nette\DI\CompilerExtension;
 
 /**
  * Rozsireni
  *
  * @author Attreid <attreid@gmail.com>
  */
-class LatteExtension extends \Nette\DI\CompilerExtension
+class LatteExtension extends CompilerExtension
 {
 
 	public function beforeCompile()

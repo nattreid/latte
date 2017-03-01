@@ -1,16 +1,25 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Latte\Macro;
+
+use Latte\CompileException;
+use Latte\Compiler;
+use Latte\MacroNode;
+use Latte\Macros\MacroSet;
+use Latte\PhpWriter;
+use stdClass;
 
 /**
  * Html makra latte
  *
  * @author Attreid <attreid@gmail.com>
  */
-class Html extends \Latte\Macros\MacroSet
+class Html extends MacroSet
 {
 
-	public static function install(\Latte\Compiler $compiler)
+	public static function install(Compiler $compiler)
 	{
 		$me = new static($compiler);
 		$me->addMacro('panel', [$me, 'macroPanel'], [$me, 'macroEndPanel']);
@@ -19,15 +28,15 @@ class Html extends \Latte\Macros\MacroSet
 
 	/**
 	 * Panel
-	 * @param \Latte\MacroNode $node
-	 * @param \Latte\PhpWriter $writer
+	 * @param MacroNode $node
+	 * @param PhpWriter $writer
 	 * @return string
-	 * @throws \Latte\CompileException
+	 * @throws CompileException
 	 */
-	public function macroPanel(\Latte\MacroNode $node, \Latte\PhpWriter $writer)
+	public function macroPanel(MacroNode $node, PhpWriter $writer): string
 	{
 		$args = explode(',', $node->args);
-		$data = new \stdClass;
+		$data = new stdClass;
 		$data->text = '';
 		$data->toTranslate = null;
 
@@ -59,26 +68,26 @@ class Html extends \Latte\Macros\MacroSet
 
 	/**
 	 * Konec panelu
-	 * @param \Latte\MacroNode $node
-	 * @param \Latte\PhpWriter $writer
+	 * @param MacroNode $node
+	 * @param PhpWriter $writer
 	 * @return string
 	 */
-	public function macroEndPanel(\Latte\MacroNode $node, \Latte\PhpWriter $writer)
+	public function macroEndPanel(MacroNode $node, PhpWriter $writer): string
 	{
 		return 'echo "</div></div>"';
 	}
 
 	/**
 	 * Pohled
-	 * @param \Latte\MacroNode $node
-	 * @param \Latte\PhpWriter $writer
+	 * @param MacroNode $node
+	 * @param PhpWriter $writer
 	 * @return string
-	 * @throws \Latte\CompileException
+	 * @throws CompileException
 	 */
-	public function macroView(\Latte\MacroNode $node, \Latte\PhpWriter $writer)
+	public function macroView(MacroNode $node, PhpWriter $writer): string
 	{
 		$args = explode(',', $node->args);
-		$data = new \stdClass;
+		$data = new stdClass;
 
 		foreach ($args as $arg) {
 			if (strpos($arg, '=>') !== false) {
@@ -92,11 +101,11 @@ class Html extends \Latte\Macros\MacroSet
 
 	/**
 	 * Konec pohledu
-	 * @param \Latte\MacroNode $node
-	 * @param \Latte\PhpWriter $writer
+	 * @param MacroNode $node
+	 * @param PhpWriter $writer
 	 * @return string
 	 */
-	public function macroEndView(\Latte\MacroNode $node, \Latte\PhpWriter $writer)
+	public function macroEndView(MacroNode $node, PhpWriter $writer): string
 	{
 		return 'echo "</div>"';
 	}

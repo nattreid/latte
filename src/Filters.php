@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Latte;
 
+use Datetime;
 use NAttreid\Utils\Date;
 use NAttreid\Utils\Number;
 
@@ -19,7 +22,7 @@ class Filters
 	 * @param mixed $value
 	 * @return mixed
 	 */
-	public static function common($filter, ...$value)
+	public static function common(string $filter, ...$value)
 	{
 		if (method_exists(__CLASS__, $filter)) {
 			return self::$filter(...$value);
@@ -32,7 +35,7 @@ class Filters
 	 * @param int $decimal
 	 * @return string
 	 */
-	private static function localeNumber($number, $decimal = 2)
+	private static function localeNumber(float $number, int $decimal = 2): string
 	{
 		return Number::getNumber($number, $decimal);
 	}
@@ -44,7 +47,7 @@ class Filters
 	 * @param int $decimal
 	 * @return string
 	 */
-	private static function percent($number, $total, $decimal = 2)
+	private static function percent(float $number, float $total, int $decimal = 2): string
 	{
 		return Number::percent($number, $total, $decimal);
 	}
@@ -54,7 +57,7 @@ class Filters
 	 * @param float $number
 	 * @return string
 	 */
-	private static function frequency($number)
+	private static function frequency(float $number): string
 	{
 		return Number::frequency($number);
 	}
@@ -63,30 +66,30 @@ class Filters
 	 * Velikost souboru
 	 * @param float $number
 	 * @param int $decimal
-	 * @param boolean $binary
+	 * @param bool $binary
 	 * @return string
 	 */
-	private static function size($number, $decimal = 2, $binary = false)
+	private static function size(float $number, int $decimal = 2, bool $binary = false)
 	{
 		return Number::size($number, $decimal, $binary);
 	}
 
 	/**
 	 * Lokalizovane datum s casem
-	 * @param \Datetime|int $datetime
+	 * @param Datetime|int $datetime
 	 * @return string
 	 */
-	private static function localeDateTime($datetime)
+	private static function localeDateTime($datetime): string
 	{
 		return Date::getDateTime($datetime);
 	}
 
 	/**
 	 * Lokalizovane datum
-	 * @param \Datetime|int $datetime
+	 * @param Datetime|int $datetime
 	 * @return string
 	 */
-	private static function localeDate($datetime)
+	private static function localeDate($datetime): string
 	{
 		return Date::getDate($datetime);
 	}
@@ -96,7 +99,7 @@ class Filters
 	 * @param int $day
 	 * @return string
 	 */
-	private static function day($day)
+	private static function day(int $day): string
 	{
 		return Date::getDay($day);
 	}
@@ -106,7 +109,7 @@ class Filters
 	 * @param int $day
 	 * @return string
 	 */
-	private static function shortDay($day)
+	private static function shortDay(int $day): string
 	{
 		return Date::getShortDay($day);
 	}
@@ -116,7 +119,7 @@ class Filters
 	 * @param int $month
 	 * @return string
 	 */
-	private static function month($month)
+	private static function month(int $month): string
 	{
 		return Date::getMonth($month);
 	}
@@ -126,7 +129,7 @@ class Filters
 	 * @param int $month
 	 * @return string
 	 */
-	private static function shortMonth($month)
+	private static function shortMonth(int $month): string
 	{
 		return Date::getShortMonth($month);
 	}
