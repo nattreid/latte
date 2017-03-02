@@ -60,7 +60,7 @@ trait TemplateTrait
 	 */
 	public function formatLayoutTemplateFiles()
 	{
-		if (preg_match('#/|\\\\#', $this->layout)) {
+		if ($this->layout != null && preg_match('#/|\\\\#', $this->layout)) {
 			return [$this->layout];
 		}
 		if ($this->templateDir !== null) {
