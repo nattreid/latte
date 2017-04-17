@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\Latte;
 
@@ -82,6 +82,16 @@ class Filters
 	private static function localeDateTime($datetime): string
 	{
 		return Date::getDateTime($datetime);
+	}
+
+	/**
+	 * Lokalizovane datum s casem bez sekund
+	 * @param Datetime|int $datetime
+	 * @return string
+	 */
+	private static function localeDateWithTime($datetime): string
+	{
+		return Date::getDateWithTime($datetime);
 	}
 
 	/**

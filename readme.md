@@ -71,6 +71,12 @@ Zachytávání vyjímek v latte
 {$datetime|localeDateTime}
 ```
 
+
+### Lokalizovaný čas bez sekund
+```html
+{$datetime|localeDateWithTime}
+```
+
 ### Lokalizované datum
 ```html
 {$datetime|localeDate}
