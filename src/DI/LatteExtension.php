@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\Latte\DI;
 
@@ -17,7 +17,7 @@ use Nette\DI\CompilerExtension;
 class LatteExtension extends CompilerExtension
 {
 
-	public function beforeCompile()
+	public function beforeCompile(): void
 	{
 		$builder = $this->getContainerBuilder();
 		$builder->getDefinition('latte.latteFactory')

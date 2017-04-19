@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\Latte\Macro;
 
@@ -19,7 +19,7 @@ use stdClass;
 class Html extends MacroSet
 {
 
-	public static function install(Compiler $compiler)
+	public static function install(Compiler $compiler): void
 	{
 		$me = new static($compiler);
 		$me->addMacro('panel', [$me, 'macroPanel'], [$me, 'macroEndPanel']);

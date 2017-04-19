@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\Latte;
 
@@ -19,7 +19,7 @@ trait TemplateTrait
 	 * Zmena pro sablony v ramci slozky templates
 	 * @param string $dir
 	 */
-	protected function setViewDir($dir = null)
+	protected function setViewDir(string $dir = null)
 	{
 		$this->templateDir = $dir;
 	}
@@ -28,7 +28,7 @@ trait TemplateTrait
 	 * Zmena cestyk adresari pro sablony
 	 * @param string $path
 	 */
-	protected function setViewPath($path = null)
+	protected function setViewPath(string $path = null)
 	{
 		$this->templatePath = $path;
 	}
@@ -36,7 +36,7 @@ trait TemplateTrait
 	/**
 	 * {@inheritdoc }
 	 */
-	public function formatTemplateFiles()
+	public function formatTemplateFiles(): array
 	{
 		if ($this->templateDir !== null) {
 			$presenter = $this->templateDir;
@@ -58,7 +58,7 @@ trait TemplateTrait
 	/**
 	 * {@inheritdoc }
 	 */
-	public function formatLayoutTemplateFiles()
+	public function formatLayoutTemplateFiles(): array
 	{
 		if ($this->layout != null && preg_match('#/|\\\\#', $this->layout)) {
 			return [$this->layout];
