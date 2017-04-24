@@ -106,40 +106,40 @@ class Filters
 
 	/**
 	 * Vrati nazev dne
-	 * @param int $day
+	 * @param int|Datetime $day
 	 * @return string
 	 */
-	private static function day(int $day): string
+	private static function day($day): string
 	{
 		return Date::getDay($day);
 	}
 
 	/**
 	 * Vrati zkraceny nazev dne
-	 * @param int $day
+	 * @param int|Datetime $day
 	 * @return string
 	 */
-	private static function shortDay(int $day): string
+	private static function shortDay($day): string
 	{
 		return Date::getShortDay($day);
 	}
 
 	/**
 	 * Vrati nazev mesice
-	 * @param int $month
+	 * @param int|Datetime $month
 	 * @return string
 	 */
-	private static function month(int $month): string
+	private static function month($month): string
 	{
 		return Date::getMonth($month);
 	}
 
 	/**
 	 * Vrati zkraceny nazev mesice
-	 * @param int $month
+	 * @param int|Datetime $month
 	 * @return string
 	 */
-	private static function shortMonth(int $month): string
+	private static function shortMonth($month): string
 	{
 		return Date::getShortMonth($month);
 	}
