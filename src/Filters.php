@@ -7,6 +7,7 @@ namespace NAttreid\Latte;
 use Datetime;
 use NAttreid\Utils\Date;
 use NAttreid\Utils\Number;
+use Nette\InvalidArgumentException;
 
 /**
  * Filtry pro latte
@@ -30,48 +31,64 @@ class Filters
 	}
 
 	/**
+	 * Zpracuje cislo
+	 * @param float|string|null $number
+	 * @return float
+	 */
+	private static function prepareFloat($number): float
+	{
+		if ($number === null) {
+			return 0;
+		} elseif (is_numeric($number)) {
+			return (float) $number;
+		} else {
+			throw new InvalidArgumentException("Value must be a number");
+		}
+	}
+
+	/**
 	 * Vrati zformatovane cislo
-	 * @param float $number
+	 * @param float|string|null $number
 	 * @param int $decimal
 	 * @return string
 	 */
-	private static function localeNumber(float $number, int $decimal = 2): string
+	private static function localeNumber($number, int $decimal = 2): string
 	{
-		return Number::getNumber($number, $decimal);
+		return Number::getNumber(self::prepareFloat($number), $decimal);
 	}
 
 	/**
 	 * Procenta
-	 * @param float $number
+	 * @param float|string|null $number
 	 * @param float $total
 	 * @param int $decimal
 	 * @return string
 	 */
-	private static function percent(float $number, float $total, int $decimal = 2): string
+	private static function percent($number, float $total, int $decimal = 2): string
 	{
-		return Number::percent($number, $total, $decimal);
+		return Number::percent(self::prepareFloat($number), $total, $decimal);
 	}
 
 	/**
 	 * Frekvence
-	 * @param float $number
+	 * @param float|string|null $number
 	 * @return string
 	 */
-	private static function frequency(float $number): string
+	private static function frequency($number): string
 	{
-		return Number::frequency($number);
+		return Number::frequency(self::prepareFloat($number));
 	}
 
 	/**
 	 * Velikost souboru
-	 * @param float $number
+	 * @param float|string|null $number
 	 * @param int $decimal
 	 * @param bool $binary
 	 * @return string
 	 */
-	private static function size(float $number, int $decimal = 2, bool $binary = false)
+	private static function size($number, int $decimal = 2, bool $binary = false)
 	{
-		return Number::size($number, $decimal, $binary);
+		return Number::size(self::prepareFloat($number), $decimal, $binary);
 	}
 
 	/**
