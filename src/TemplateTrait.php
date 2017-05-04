@@ -63,18 +63,19 @@ trait TemplateTrait
 		if ($this->layout != null && preg_match('#/|\\\\#', $this->layout)) {
 			return [$this->layout];
 		}
+
+		list($module, $presenter) = Helpers::splitName($this->getName());
 		if ($this->templateDir !== null) {
 			$presenter = $this->templateDir;
-			$module = null;
-		} else {
-			list($module, $presenter) = Helpers::splitName($this->getName());
 		}
+
 		$layout = $this->layout ? $this->layout : 'layout';
 		if ($this->templatePath !== null) {
 			$dir = $this->templatePath;
 		} else {
 			$dir = dirname($this->getReflection()->getFileName());
 		}
+
 		$dir = is_dir("$dir/templates") ? $dir : dirname($dir);
 		$list = [
 			"$dir/templates/$presenter/@$layout.latte",
