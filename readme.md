@@ -101,3 +101,8 @@ Zachytávání vyjímek v latte
 ```html
 {$month|shortMonth}
 ```
+
+### Prevod do json
+```html
+{$data|json}
+```

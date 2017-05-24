@@ -8,6 +8,7 @@ use Datetime;
 use NAttreid\Utils\Date;
 use NAttreid\Utils\Number;
 use Nette\InvalidArgumentException;
+use Nette\Utils\Json;
 
 /**
  * Filtry pro latte
@@ -161,4 +162,13 @@ class Filters
 		return Date::getShortMonth($month);
 	}
 
+	/**
+	 * Prevede vstup do JSON
+	 * @param mixed $obj
+	 * @return string
+	 */
+	private static function json($obj): string
+	{
+		return Json::encode($obj);
+	}
 }
