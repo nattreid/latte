@@ -95,21 +95,23 @@ class Filters
 	/**
 	 * Lokalizovane datum s casem
 	 * @param Datetime|int $datetime
+	 * @param bool $withSeconds
 	 * @return string
 	 */
-	private static function localeDateTime($datetime): string
+	private static function localeDateTime($datetime, bool $withSeconds = false): string
 	{
-		return Date::getDateTime($datetime);
+		return Date::getDateTime($datetime, $withSeconds);
 	}
 
 	/**
-	 * Lokalizovane datum s casem bez sekund
+	 * Lokalizovany cas
 	 * @param Datetime|int $datetime
+	 * @param bool $withSeconds
 	 * @return string
 	 */
-	private static function localeDateWithTime($datetime): string
+	private static function localeTime($datetime, bool $withSeconds = false): string
 	{
-		return Date::getDateWithTime($datetime);
+		return Date::getTime($datetime, $withSeconds);
 	}
 
 	/**

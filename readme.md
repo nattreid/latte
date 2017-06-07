@@ -66,15 +66,15 @@ Zachytávání vyjímek v latte
 {$fileSize|size:$decimal:$binary}
 ```
 
-### Lokalizovaný čas
+### Lokalizovane datum s časem
 ```html
-{$datetime|localeDateTime}
+{$datetime|localeDateTime[:withSeconds(true|false)]}
 ```
 
 
-### Lokalizovaný čas bez sekund
+### Lokalizovaný čas
 ```html
-{$datetime|localeDateWithTime}
+{$datetime|localeTime[:withSeconds(true|false)]}
 ```
 
 ### Lokalizované datum
