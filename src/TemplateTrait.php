@@ -25,7 +25,7 @@ trait TemplateTrait
 	}
 
 	/**
-	 * Zmena cestyk adresari pro sablony
+	 * Zmena cesty k adresari pro sablony
 	 * @param string $path
 	 */
 	protected function setViewPath(string $path = null)
