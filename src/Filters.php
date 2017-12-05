@@ -29,6 +29,7 @@ class Filters
 		if (method_exists(__CLASS__, $filter)) {
 			return self::$filter(...$value);
 		}
+		return null;
 	}
 
 	/**
@@ -168,6 +169,7 @@ class Filters
 	 * Prevede vstup do JSON
 	 * @param mixed $obj
 	 * @return string
+	 * @throws \Nette\Utils\JsonException
 	 */
 	private static function json($obj): string
 	{
