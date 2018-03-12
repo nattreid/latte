@@ -53,17 +53,17 @@ class Html extends MacroSet
 			}
 		}
 		return $writer->write('
-            echo "<div' . (!empty($data->id) ? ' id=\"' . $data->id . '\"' : '') . ' class=\"panel-container' . (!empty($data->class) ? ' ' . $data->class : '') . '\">
-                    <header>
-                        <h1>";
+           echo "<div' . (!empty($data->id) ? ' id=\"' . $data->id . '\"' : '') . ' class=\"panel panel-default' . (!empty($data->class) ? ' ' . $data->class : '') . '\">
+                    <div class=\"panel-heading\">
+                        <h3 class=\"panel-title\">";
                             ' . (
 			empty($data->toTranslate) ?
 				'if(isset($this->blockQueue["title"])){$this->renderBlock("title", get_defined_vars());}'
 				: 'echo LR\Filters::escapeHtmlText(call_user_func($this->filters->translate, "' . $data->toTranslate . '")). "' . $data->text . '";'
 			) . '
-                  		echo "</h1>
-                    </header>
-                <div class=\"content\">";');
+                  		echo "</h3>
+                    </div>
+                <div class=\"panel-body\">";');
 	}
 
 	/**
@@ -96,7 +96,7 @@ class Html extends MacroSet
 			}
 		}
 		return $writer->write('echo 
-            "<div' . (!empty($data->id) ? ' id=\"' . $data->id . '\"' : '') . ' class=\"view-container' . (!empty($data->class) ? ' ' . $data->class : '') . '\">"');
+            "<div' . (!empty($data->id) ? ' id=\"' . $data->id . '\"' : '') . ' class=\"panel panel-default' . (!empty($data->class) ? ' ' . $data->class : '') . '\"><div class=\"panel-body\">"');
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Html extends MacroSet
 	 */
 	public function macroEndView(MacroNode $node, PhpWriter $writer): string
 	{
-		return 'echo "</div>"';
+		return 'echo "</div></div>"';
 	}
 
 }
