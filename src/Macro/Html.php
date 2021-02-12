@@ -58,7 +58,7 @@ class Html extends MacroSet
                         <h3 class=\"panel-title\">";
                             ' . (
 			empty($data->toTranslate) ?
-				'if(isset($this->blockQueue["title"])){$this->renderBlock("title", get_defined_vars());}'
+				'if($this->hasBlock("title")){$this->renderBlock("title", get_defined_vars());}'
 				: 'echo LR\Filters::escapeHtmlText(call_user_func($this->filters->translate, "' . $data->toTranslate . '")). "' . $data->text . '";'
 			) . '
                   		echo "</h3>
