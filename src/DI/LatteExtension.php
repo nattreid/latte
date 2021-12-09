@@ -21,6 +21,7 @@ class LatteExtension extends CompilerExtension
 	{
 		$builder = $this->getContainerBuilder();
 		$builder->getDefinition('latte.latteFactory')
+			->getResultDefinition()
 			->addSetup(Html::class . '::install(?->getCompiler())', ['@self'])
 			->addSetup(Helper::class . '::install(?->getCompiler())', ['@self'])
 			->addSetup('addFilter', [null, Filters::class . '::common']);
